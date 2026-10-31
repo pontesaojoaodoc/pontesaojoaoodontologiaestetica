@@ -227,6 +227,11 @@ h1, h2, h3, p { margin-top: 0; }
 .whatsapp-float::after { position: absolute; inset: -4px; border: 2px solid rgba(37,211,102,.42); border-radius: inherit; content: ''; opacity: 0; pointer-events: none; animation: wa-pulse 2.8s ease-out infinite; }
 @keyframes wa-pulse { 0% { opacity: .58; transform: scale(.96); } 72%, 100% { opacity: 0; transform: scale(1.38); } }
 
+@media (min-width: 821px) {
+  .hero-grid { align-items: stretch; }
+  .hero-visual { align-self: stretch; min-height: 0; }
+}
+
 @media (min-width: 1280px) {
   .hero { padding-top: 70px; padding-bottom: 78px; }
   .hero-visual { min-height: 480px; }
