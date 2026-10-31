@@ -1,0 +1,12 @@
+# Entregas
+
+- [x] **Landing page institucional mais completa e responsiva.** Criada uma landing page para a Ponte São João Odontologia inspirada na estrutura da referência, ampliada com apresentação da clínica, tratamentos, jornada de agendamento, equipe, perguntas frequentes, outras especialidades, endereço e horários. Layout adaptado para celulares, tablets e computadores.
+- [x] **Fotografias e identidade visual reais da clínica.** Reaproveitadas a logomarca, fotos de consultório, imagens de tratamentos e retratos oficiais dos profissionais do site institucional. Os arquivos foram enviados para o armazenamento do projeto; não foram gerados rostos nem usadas imagens genéricas no lugar da equipe.
+- [x] **Serviços prioritários.** Implantes dentários, próteses fixas/removíveis/sobre implante e cirurgias odontológicas aparecem com textos informativos fiéis às fontes. A landing page informa que a indicação depende de avaliação profissional individual.
+- [x] **Clínica e equipe.** Apresentados o posicionamento institucional e quatro profissionais publicados na página oficial, com áreas e credenciais disponíveis: Dr. Marco Aurélio Wood Macan, Dra. Regina de Almeida Fernandes, Dr. Antônio Carlos de Mello e Dra. Sara Aparecida de Souza.
+- [x] **Agendamento e contato.** Chamadas para ação pelo WhatsApp são distribuídas pela página e incluem botão rápido, além do telefone oficial (11) 96318-1163.
+- [x] **Avaliações, confiança e orientação.** Exibida a nota 4,9/5 e a informação de 144 avaliações apontadas na landing page de referência, com link ao perfil no Google. Incluída seção de dúvidas frequentes sobre serviços, agendamento e condições de atendimento.
+- [x] **Endereço e horário.** Exibidos Av. São João, 627 – Ponte São João, Jundiaí–SP, CEP 13216-000, horário de segunda a sexta, 8h–18h, e sábado, 8h–13h, com link para direções.
+- [x] **Condições de atendimento.** Está explícito que o atendimento é particular, a clínica não atende convênios/planos e não atende crianças.
+- [x] **Rodapé institucional.** Incluídos telefone, endereço, redes sociais, responsável técnica Dra. Regina de Almeida Fernandes (CRO-SP 57949) e identificação da clínica CRO-SP 026257.
+- [x] **Conteúdo público e metadados.** O conteúdo principal está no HTML inicial, com título, descrição, metadados Open Graph/Twitter e dados estruturados de endereço/horários. A rota `/` está declarada em `public/manus-routes.json`; metadados de URL canônica foram omitidos enquanto o domínio de publicação não for definido.
