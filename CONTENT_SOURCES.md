@@ -6,18 +6,18 @@ Fontes consultadas em 31 de outubro de 2026 para revisar dados profissionais, se
 
 Fonte principal: [Equipe oficial da Ponte São João Odontologia](https://www.pontesaojoaoodontologia.com.br/equipe-odontologia/).
 
-- Dra. Regina de Almeida Fernandes, CRO-SP 57949: graduada pela UMC em 1997; especialista em Prótese Dentária; pós-graduação em Odontologia para Pacientes Especiais, Universidade de Barcelona, 2014; professora assistente na UNG e Uniban. Responsável técnica, segundo a própria página.
-- Dr. Marco Aurélio Wood Macan, CRO-SP 99054: graduação PUC Campinas (2009); especialização em Dentística (Universidade Leopoldo Mandic, 2013); pós-graduação em Implantodontia e Prótese sobre Implante (APCD, 2018).
-- Dr. Antônio Carlos de Mello, CRO-SP 45686: graduação pela Faculdade de Odontologia de Lavras (1990); formação em Cirurgia Bucomaxilofacial pelo Ceddar, em Campinas; formação em Implantodontia pela APCD de Piracicaba (2005).
-- Dra. Sara Aparecida de Souza, CRO-SP 42710: graduada pela Unifal (1990), especialista em Ortodontia; a página também registra formação pela instituição identificada como Funorte.
+- Dra. Regina de Almeida Fernandes, CRO-SP 57949: graduação pela UMC (1997); especialização em Prótese Dentária pela Universidade de São Paulo (1999); pós-graduação em Odontologia para Pacientes Especiais pela Universidad de Barcelona, Espanha (2014); professora assistente da UNG e da Uniban. A página a identifica como responsável técnica.
+- Dr. Marco Aurélio Wood Macan, CRO-SP 99054: graduação pela PUC-Campinas (2009); especialização em Dentística pela Universidade Leopoldo Mandic (2013); pós-graduação em Implantodontia e Prótese sobre Implante pela APCD (2018); identificado na página como “Profissional 5 Estrelas no Doctoralia”.
+- Dr. Antônio Carlos de Mello, CRO-SP 45686: graduação pela Faculdade de Odontologia de Lavras (1990); formação em Cirurgia Bucomaxilofacial pelo Ceddar, em Campinas; formação em Implantodontia pela APCD de Piracicaba (2005); atuação informada em Cirurgia e Traumatologia Bucomaxilofaciais.
+- Dra. Sara Aparecida de Souza, CRO-SP 42710: graduação pela Unifal (1990); especialização em Ortodontia pela Escola de Farmácia e Odontologia de Alfenas (1990); a página também registra especialização pelas Faculdades Unidas do Norte de Minas (Funorte) e pós-graduação pela Funorte em Alfenas–MG, em setembro de 2012.
 
-Os quatro nomes, CROs, áreas e qualificações da landing page correspondem aos dados publicados na página oficial consultada. A fonte principal deve continuar sendo a referência editorial para eventuais atualizações, sem inferir títulos adicionais.
+Além das formações acima, a página apresenta uma declaração pessoal de cada profissional. As fichas expandidas da landing page reproduzem essas declarações e os dados oficiais, sem inferir títulos adicionais.
 
 ## Serviços e condições publicados
 
-Fonte: [Serviços odontológicos da clínica](https://www.pontesaojoaoodontologia.com.br/servicos-odontologicos/). A página lista estética dental, atendimento a pacientes com necessidades especiais, próteses dentárias, cirurgias, endodontia, estomatologia, odontogeriatria, periodontia, day care, sedação, ATM, protocolo Branemark, urgências, implantes, reabilitação oral e coroas dentárias. Também diz “Agende sua avaliação gratuita”, informa atendimento 24 horas para urgências e orienta a confirmar detalhes com a equipe.
+Fonte: [Página oficial de equipe e contato](https://www.pontesaojoaoodontologia.com.br/equipe-odontologia/) e [página inicial oficial](https://www.pontesaojoaoodontologia.com.br/). A equipe exibe a chamada “Agende sua avaliação gratuita”. A página inicial informa atendimento particular e declara “NÃO ATENDEMOS CONVÊNIO, NÃO ATENDEMOS CRIANÇAS”; a página da equipe também informa que não atende convênios ou planos de saúde.
 
-A página da equipe informa o número (11) 96318-1163, endereço Av. São João, 627, Ponte São João, Jundiaí–SP, CEP 13216-000, atendimento particular, sem convênios/planos nem crianças.
+A página da equipe informa o número (11) 96318-1163, endereço Av. São João, 627, Ponte São João, Jundiaí–SP, CEP 13216-000, atendimento particular e ausência de atendimento infantil ou por convênios/planos. A landing também informa os horários já publicados na referência enviada pelo usuário: segunda a sexta, 8h–18h; sábado, 8h–13h. A página institucional informa atendimento 24 horas para urgências odontológicas com horário agendado; a FAQ recomenda confirmar disponibilidade e orientações diretamente com a equipe.
 
 ## Avaliações e referência da landing page
 
