@@ -33,10 +33,6 @@ button { font: inherit; }
 .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 99; padding: .8rem 1rem; border-radius: 8px; color: white; background: var(--navy); }
 .skip-link:focus { top: 1rem; }
 
-.notice-bar { background: var(--navy); color: rgba(255,255,255,.88); font-size: 11px; letter-spacing: .045em; }
-.notice-inner { min-height: 35px; display: flex; align-items: center; justify-content: center; gap: 13px; }
-.notice-inner a { margin-left: auto; color: white; text-decoration: none; font-weight: 700; font-size: 12px; }
-.notice-divider { width: 3px; height: 3px; background: #ef9a6a; border-radius: 50%; }
 .site-header { position: sticky; top: 0; z-index: 20; background: rgba(251,249,245,.94); border-bottom: 1px solid rgba(23,42,59,.07); backdrop-filter: blur(14px); }
 .header-inner { min-height: 83px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
 .brand { display: inline-flex; align-items: center; flex: 0 0 auto; }
@@ -258,10 +254,6 @@ h1, h2, h3, p { margin-top: 0; }
   html { scroll-padding-top: 72px; }
   .container { width: calc(100% - 36px); }
   .section-pad { padding-block: 69px; }
-  .notice-inner { min-height: 54px; flex-direction: column; justify-content: center; gap: 2px; padding-block: 7px; font-size: 8.5px; line-height: 1.2; text-align: center; }
-  .notice-inner a { display: none; }
-  .notice-divider { display: none; }
-  .site-header { top: 0; }
   .header-inner { min-height: 69px; gap: 12px; }
   .brand img { width: 168px; }
   .header-cta { min-height: 38px; gap: 8px; margin-left: auto; padding-inline: 11px; font-size: 10px; }
@@ -380,6 +372,14 @@ h1, h2, h3, p { margin-top: 0; }
   .service-card { grid-template-columns: .78fr 1.22fr; }
   .service-content { padding-inline: 12px; }
   .team-grid { gap: 8px; }
+}
+
+@media (max-width: 360px) {
+  .header-inner { gap: 8px; }
+  .brand img { width: 120px; }
+  .header-cta { min-height: 35px; gap: 5px; padding-inline: 7px; font-size: 8px; }
+  .header-cta span { font-size: 11px; }
+  .menu-toggle { width: 31px; height: 32px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
