@@ -30,4 +30,8 @@ A [landing page de referência fornecida pelo usuário](https://ponteodonto-2xxj
 - [Google Ads — Optimize your ads and landing pages](https://support.google.com/google-ads/answer/6238826?hl=en): a página deve corresponder ao anúncio/palavras-chave, apresentar chamada para ação clara, funcionar bem em dispositivos móveis, facilitar o contato e exibir informações importantes logo no início. O Google recomenda conteúdo original e útil.
 - [Google Ads — Landing page definition and experience](https://support.google.com/google-ads/answer/14086?hl=en): a experiência da página depende, entre outros fatores, da utilidade/relevância do conteúdo, facilidade de navegação e expectativas geradas pelo anúncio; a página de destino e a URL de visualização do anúncio precisam compartilhar o domínio.
 
-Os eventos `lead_contact_click` no `dataLayer` são sinalizações de intenção de clicar em WhatsApp ou telefone, não leads concluídos. Só serão enviados ao Google Ads/Analytics depois de configurar um Google Tag Manager ou Google tag da conta da clínica; nenhum ID de tag foi fornecido nesta etapa.
+## Mensuração
+
+Em 31/10/2026, o usuário forneceu o container `GTM-WZKT9QKC`, instalado na página com o carregador assíncrono no `<head>` e o fallback `<noscript>` no início do `<body>`. O site envia ao `dataLayer` o evento `lead_contact_click` com apenas `channel` (WhatsApp/telefone) e `placement` (posição do botão); não envia sintomas ou dados pessoais do paciente.
+
+O código do site foi conferido, mas o workspace administrativo do Tag Manager não foi acessado. Nenhuma tag de conversão do Google Ads ou Analytics foi criada ou confirmada nesse workspace. Portanto, os eventos estão disponíveis para configuração no GTM, mas isso, isoladamente, não comprova conversões. A gestão de consentimento e quaisquer tags adicionais também não foram configuradas nesta alteração.
