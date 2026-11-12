@@ -117,6 +117,8 @@ leadForm?.addEventListener('submit', (event) => {
     pagina: window.location.href,
     origem: campaign.utm_source || 'whatsapp_form',
     termo: [campaign.utm_campaign, campaign.utm_content, campaign.utm_medium, campaign.utm_term, placement].filter(Boolean).join(' | '),
+    evento: 'whatsapp_form_submit',
+    canal: 'whatsapp',
     placement,
     destino: href,
     referrer: document.referrer,
@@ -153,6 +155,14 @@ document.addEventListener('click', (event) => {
 
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event: 'lead_contact_click', channel, placement, ...campaign });
+  if (channel === 'phone' && typeof window.gtag === 'function') {
+    window.gtag('event', 'phone_call_click', {
+      event_category: 'lead',
+      event_label: placement,
+      value: 1,
+      ...campaign
+    });
+  }
 
   if (link && openLeadModal(link, placement)) {
     event.preventDefault();
@@ -165,6 +175,8 @@ document.addEventListener('click', (event) => {
     pagina: window.location.href,
     origem: campaign.utm_source || channel,
     termo: [campaign.utm_campaign, campaign.utm_content, campaign.utm_medium, campaign.utm_term, placement].filter(Boolean).join(' | '),
+    evento: 'phone_click',
+    canal: 'phone',
     placement,
     destino: href,
     referrer: document.referrer,
