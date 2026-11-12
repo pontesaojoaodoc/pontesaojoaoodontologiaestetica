@@ -39,7 +39,6 @@ const conversionAreas = [
   ['.whatsapp-float', 'floating_whatsapp']
 ];
 
-// Endpoint publicado no Apps Script vinculado à Planilha Leads Ads.
 const LEADS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzeD6tJIP4sm6o5ffpmt2wO5iMja2bmzvk9Pm_rZs8LWyFQT8KGxUjeFHin7wtgnpec8g/exec';
 
 function getCampaignData() {
@@ -55,8 +54,6 @@ function getCampaignData() {
 
 function sendLeadToSheets(payload) {
   const body = JSON.stringify(payload);
-  // text/plain evita preflight e o sendBeacon continua enviando mesmo quando o
-  // navegador já está abrindo o WhatsApp em uma nova aba.
   if (navigator.sendBeacon) {
     const sent = navigator.sendBeacon(
       LEADS_ENDPOINT,
@@ -73,31 +70,101 @@ function sendLeadToSheets(payload) {
   }).catch(() => {});
 }
 
-document.addEventListener('click', (event) => {
-  if (!(event.target instanceof Element)) return;
-  const link = event.target.closest('a[href^="https://wa.me/"], a[href^="tel:"]');
-  if (!link) return;
+const leadModal = document.querySelector('#lead-modal');
+const leadForm = document.querySelector('#lead-form');
+const nameInput = document.querySelector('#lead-name');
+const phoneInput = document.querySelector('#lead-phone');
+const leadError = document.querySelector('#lead-error');
+let pendingWhatsApp = null;
 
-  const href = link.getAttribute('href') || '';
-  const area = conversionAreas.find(([selector]) => link.closest(selector));
-  const channel = href.startsWith('tel:') ? 'phone' : 'whatsapp';
-  const placement = area ? area[1] : 'other';
+function closeLeadModal() {
+  if (!leadModal) return;
+  leadModal.hidden = true;
+  pendingWhatsApp = null;
+  if (leadError) leadError.textContent = '';
+}
+
+function openLeadModal(link, placement) {
+  if (!leadModal || !leadForm || !nameInput || !phoneInput) return false;
+  pendingWhatsApp = { href: link.href, placement };
+  leadForm.reset();
+  if (leadError) leadError.textContent = '';
+  leadModal.hidden = false;
+  window.setTimeout(() => nameInput.focus(), 0);
+  return true;
+}
+
+leadModal?.querySelectorAll('[data-close-lead-modal]').forEach((element) => {
+  element.addEventListener('click', closeLeadModal);
+});
+
+leadForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const nome = nameInput.value.trim();
+  const telefone = phoneInput.value.trim();
+  if (nome.length < 2 || telefone.replace(/\D/g, '').length < 10) {
+    if (leadError) leadError.textContent = 'Informe seu nome e um telefone válido para continuar.';
+    return;
+  }
+  if (!pendingWhatsApp) return closeLeadModal();
+
   const campaign = getCampaignData();
+  const placement = pendingWhatsApp.placement;
+  const href = pendingWhatsApp.href;
+  sendLeadToSheets({
+    nome,
+    telefone,
+    pagina: window.location.href,
+    origem: campaign.utm_source || 'whatsapp_form',
+    termo: [campaign.utm_campaign, campaign.utm_medium, campaign.utm_term, placement].filter(Boolean).join(' | '),
+    placement,
+    destino: href,
+    referrer: document.referrer,
+    ...campaign
+  });
 
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
-    event: 'lead_contact_click',
-    channel,
+    event: 'lead_form_submit',
+    channel: 'whatsapp',
     placement,
     ...campaign
   });
 
+  const message = `Olá, meu nome é ${nome}. Vim pelo site da Ponte São João e gostaria de agendar uma avaliação.`;
+  const target = new URL(href);
+  target.searchParams.set('text', message);
+  closeLeadModal();
+  window.open(target.toString(), '_blank', 'noopener,noreferrer');
+});
+
+document.addEventListener('click', (event) => {
+  if (!(event.target instanceof Element)) return;
+  const link = event.target.closest('a[href^="https://wa.me/"]');
+  const phoneLink = event.target.closest('a[href^="tel:"]');
+  if (!link && !phoneLink) return;
+
+  const activeLink = link || phoneLink;
+  const href = activeLink.getAttribute('href') || '';
+  const area = conversionAreas.find(([selector]) => activeLink.closest(selector));
+  const channel = link ? 'whatsapp' : 'phone';
+  const placement = area ? area[1] : 'other';
+  const campaign = getCampaignData();
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: 'lead_contact_click', channel, placement, ...campaign });
+
+  if (link && openLeadModal(link, placement)) {
+    event.preventDefault();
+    return;
+  }
+
   sendLeadToSheets({
-    nome: channel === 'whatsapp' ? 'Clique WhatsApp' : 'Clique telefone',
+    nome: 'Clique telefone',
     telefone: '',
     pagina: window.location.href,
-    origem: channel,
-    termo: campaign.utm_term || placement,
+    origem: campaign.utm_source || channel,
+    termo: [campaign.utm_campaign, campaign.utm_medium, campaign.utm_term, placement].filter(Boolean).join(' | '),
     placement,
     destino: href,
     referrer: document.referrer,
