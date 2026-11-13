@@ -95,7 +95,7 @@ document.addEventListener('click', (event) => {
   }
 
   sendLeadToSheets({
-    nome: channel === 'whatsapp' ? 'Clique WhatsApp' : 'Clique telefone',
+    nome: channel === 'whatsapp' ? 'Lead WhatsApp' : 'Clique telefone',
     telefone: '',
     pagina: window.location.href,
     origem: campaign.utm_source || channel,
