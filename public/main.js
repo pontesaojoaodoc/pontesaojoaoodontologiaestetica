@@ -70,76 +70,6 @@ function sendLeadToSheets(payload) {
   }).catch(() => {});
 }
 
-const leadModal = document.querySelector('#lead-modal');
-const leadForm = document.querySelector('#lead-form');
-const nameInput = document.querySelector('#lead-name');
-const phoneInput = document.querySelector('#lead-phone');
-const leadError = document.querySelector('#lead-error');
-let pendingWhatsApp = null;
-
-function closeLeadModal() {
-  if (!leadModal) return;
-  leadModal.hidden = true;
-  pendingWhatsApp = null;
-  if (leadError) leadError.textContent = '';
-}
-
-function openLeadModal(link, placement) {
-  if (!leadModal || !leadForm || !nameInput || !phoneInput) return false;
-  pendingWhatsApp = { href: link.href, placement };
-  leadForm.reset();
-  if (leadError) leadError.textContent = '';
-  leadModal.hidden = false;
-  window.setTimeout(() => nameInput.focus(), 0);
-  return true;
-}
-
-leadModal?.querySelectorAll('[data-close-lead-modal]').forEach((element) => {
-  element.addEventListener('click', closeLeadModal);
-});
-
-leadForm?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const nome = nameInput.value.trim();
-  const telefone = phoneInput.value.trim();
-  if (nome.length < 2 || telefone.replace(/\D/g, '').length < 10) {
-    if (leadError) leadError.textContent = 'Informe seu nome e um telefone válido para continuar.';
-    return;
-  }
-  if (!pendingWhatsApp) return closeLeadModal();
-
-  const campaign = getCampaignData();
-  const placement = pendingWhatsApp.placement;
-  const href = pendingWhatsApp.href;
-  sendLeadToSheets({
-    nome,
-    telefone,
-    pagina: window.location.href,
-    origem: campaign.utm_source || 'whatsapp_form',
-    termo: [campaign.utm_campaign, campaign.utm_content, campaign.utm_medium, campaign.utm_term, placement].filter(Boolean).join(' | '),
-    evento: 'whatsapp_form_submit',
-    canal: 'whatsapp',
-    placement,
-    destino: href,
-    referrer: document.referrer,
-    ...campaign
-  });
-
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: 'lead_form_submit',
-    channel: 'whatsapp',
-    placement,
-    ...campaign
-  });
-
-  const message = `Olá, meu nome é ${nome}. Vim pelo site da Ponte São João e gostaria de agendar uma avaliação.`;
-  const target = new URL(href);
-  target.searchParams.set('text', message);
-  closeLeadModal();
-  window.open(target.toString(), '_blank', 'noopener,noreferrer');
-});
-
 document.addEventListener('click', (event) => {
   if (!(event.target instanceof Element)) return;
   const link = event.target.closest('a[href^="https://wa.me/"]');
@@ -164,19 +94,14 @@ document.addEventListener('click', (event) => {
     });
   }
 
-  if (link && openLeadModal(link, placement)) {
-    event.preventDefault();
-    return;
-  }
-
   sendLeadToSheets({
     nome: 'Clique telefone',
     telefone: '',
     pagina: window.location.href,
     origem: campaign.utm_source || channel,
     termo: [campaign.utm_campaign, campaign.utm_content, campaign.utm_medium, campaign.utm_term, placement].filter(Boolean).join(' | '),
-    evento: 'phone_click',
-    canal: 'phone',
+    evento: channel === 'whatsapp' ? 'whatsapp_click' : 'phone_click',
+    canal: channel,
     placement,
     destino: href,
     referrer: document.referrer,
